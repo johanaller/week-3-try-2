@@ -23,8 +23,8 @@ class ApiClient {
         `${apiUrl}/movie/${movieId}?api_key=${this.apiKey}`,
         {
           headers: {
-            "Content-type": "application/json",
-          },
+            "Content-type": "application/json"
+          }
         }
       );
       const data: FullMovieResponse = await response.json();
@@ -32,7 +32,7 @@ class ApiClient {
     } catch (err) {
       console.error(err);
       return {
-        message: "An error has ocurred while fetching data",
+        message: "An error has ocurred while fetching data"
       } as ApiError;
     }
   }
@@ -43,8 +43,8 @@ class ApiClient {
         `${apiUrl}/search/movie?query=star%20wars&api_key=${this.apiKey}`,
         {
           headers: {
-            "Content-type": "application/json",
-          },
+            "Content-type": "application/json"
+          }
         }
       );
       const data: ApiResponse<Movie> = await response.json();
@@ -53,7 +53,7 @@ class ApiClient {
     } catch (err) {
       console.error(err);
       return {
-        message: "An error has ocurred while fetching data",
+        message: "An error has ocurred while fetching data"
       } as ApiError;
     }
   }
@@ -66,8 +66,8 @@ class ApiClient {
         `${apiUrl}/movie/${movieId}/reviews?api_key=${this.apiKey}`,
         {
           headers: {
-            "Content-type": "application/json",
-          },
+            "Content-type": "application/json"
+          }
         }
       );
       const data: ApiResponse<MovieReview> = await response.json();
@@ -75,7 +75,7 @@ class ApiClient {
     } catch (err) {
       console.error(err);
       return {
-        message: "An error has ocurred while fetching data",
+        message: "An error has ocurred while fetching data"
       } as ApiError;
     }
   }
@@ -86,8 +86,8 @@ class ApiClient {
         `${apiUrl}/movie/now_playing?api_key=${this.apiKey}`,
         {
           headers: {
-            "Content-type": "application/json",
-          },
+            "Content-type": "application/json"
+          }
         }
       );
       const data: ApiResponse<Movie> = await response.json();
@@ -95,7 +95,27 @@ class ApiClient {
     } catch (err) {
       console.error(err);
       return {
-        message: "An error has ocurred while fetching data",
+        message: "An error has ocurred while fetching data"
+      } as ApiError;
+    }
+  }
+
+  async getMovieListUpcoming(): Promise<ApiResponse<Movie> | ApiError> {
+    try {
+      const response = await fetch(
+        `${apiUrl}/movie/upcoming?api_key=${this.apiKey}`,
+        {
+          headers: {
+            "Content-type": "application/json"
+          }
+        }
+      );
+      const data: ApiResponse<Movie> = await response.json();
+      return data;
+    } catch (err) {
+      console.error(err);
+      return {
+        message: "An error has ocurred while fetching data"
       } as ApiError;
     }
   }

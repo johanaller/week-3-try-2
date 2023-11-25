@@ -3,6 +3,7 @@ import MovieList from "../components/MovieList";
 import SearchBar from "../components/SearchBar";
 import PageContainer from "../components/styled/PageContainer";
 import TrendingNow from "../components/TrendingNow";
+import Upcoming from "../components/Upcoming";
 
 export default function MainPage() {
   return (
@@ -10,6 +11,7 @@ export default function MainPage() {
       <SearchBar />
       <MovieList />
       <TrendingNow />
+      <Upcoming />
     </PageContainer>
   );
 }
